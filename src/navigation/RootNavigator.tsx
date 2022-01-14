@@ -12,6 +12,7 @@ import QRScreen from '../screens/qr-scanner-screen';
 import ProductDetailScreen from '../screens/product-details';
 import CartScreen from '../screens/cart-details';
 import CheckoutScreen from '../screens/checkout';
+import RegisterScreen from '../screens/register-screen';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const RootStack = (): JSX.Element => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
             <Stack.Screen name="HomeScreen" component={HomeScreen} />
             <Stack.Screen name="ChatScreen" component={ChatScreen} />
             <Stack.Screen name="PasswordWelcomeScreen" component={PasswordWelcomeScreen} />

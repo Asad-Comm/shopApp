@@ -4,10 +4,10 @@ import actionTypes from './actionTypes';
 const addToCart = (data, successCB) => {
     return async (dispatch, getState) => {
         const cartState = getState().GeneralReducer.cart;
-       if (cartState.find(item => item.id === data.id)) {
-            Alert.alert("Cart", "Already In Cart");
-            return;
-       }
+    //    if (cartState.find(item => item.id === data.id)) {
+    //         Alert.alert("Cart", "Already In Cart");
+    //         return;
+    //    }
 
        dispatch({ type: actionTypes.ADD_TO_CART, payload: data });
        successCB();

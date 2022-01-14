@@ -6,7 +6,7 @@ import TextSemiBold from '../../components/text-semibold';
 import { SCREEN_HEIGHT } from '../../utils/metrics';
 import styles from './styles';
 
-const LoginScreen: React.FC<null> = (props) => {
+const RegisterScreen: React.FC<null> = (props) => {
     const [secureTextEntry, setSecureTextEntry] = useState(false);
 
 
@@ -34,7 +34,7 @@ const LoginScreen: React.FC<null> = (props) => {
     return <View style={styles.container}>
         <View style={styles.body}>
             <TextRegular
-                text={"Login"}
+                text={"Sign Up"}
                 style={styles.title}
             />
             {/* <TextRegular
@@ -61,22 +61,27 @@ const LoginScreen: React.FC<null> = (props) => {
             />
             {renderEye()}
         </View>
+        <View style={[styles.inputContainer,{        marginTop: 10
+}]}>
+
+            <TextInput
+                placeholder="Confirm Password"
+                style={styles.input}
+                placeholderTextColor="gray"
+                secureTextEntry={secureTextEntry}
+            />
+            {renderEye()}
+        </View>
         <TouchableOpacity onPress={() => {
-            props.navigation.navigate("HomeScreen")
+            props.navigation.navigate("LoginScreen")
         }} style={styles.setPasswordBtn}>
             <TextSemiBold
-                text="Login"
+                text="Sign Up"
                 style={styles.setPassword}
             />
         </TouchableOpacity>
-                <TouchableOpacity onPress={() => props.navigation.navigate("RegisterScreen")}>
-                 <TextRegular
-                text={"Dont't have an account?. Sign Up"}
-                style={styles.trusted}
-            />
-            </TouchableOpacity>
         {/* {renderReport()} */}
     </View>
 };
 
-export default LoginScreen;
+export default RegisterScreen;

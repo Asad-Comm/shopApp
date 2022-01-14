@@ -8,7 +8,7 @@ import GeneralActions from '../../StateManagement/Actions/general';
 import styles from './styles';
 
 const ProductDetailScreen: React.FC<null> = (props) => {
-    const paramsProduct = JSON.parse(props.route?.params?.product);
+    const paramsProduct = props.route?.params?.product;
     const dispatch = useDispatch();
 
     const renderHeader = (): JSX.Element => {

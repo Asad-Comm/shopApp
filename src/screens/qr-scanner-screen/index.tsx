@@ -1,6 +1,6 @@
 import { useIsFocused } from '@react-navigation/native';
 import React, { useCallback, useEffect, useRef } from 'react';
-import { Image, Text, TouchableOpacity, View, } from 'react-native';
+import { Image, Text, TouchableOpacity, View, Linking } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { icons } from '../../assets/images';
 import TextRegular from '../../components/text-regular';
@@ -11,6 +11,24 @@ import styles from './styles';
 const QRScreen: React.FC<null> = (props) => {
     const cameraRef = useRef();
     const isFocused = useIsFocused();
+
+    let products = [
+      {
+        title : 'Pepsi Can',
+        price : 100,
+        link : 'https://qrco.de/bch4zy'
+      },
+      {
+        title : 'Quacker Oats',
+        price : 550,
+        link : 'https://qrco.de/bch528'
+      },
+      {
+        title : 'Mentos Packet',
+        price : 320,
+        link : 'https://qrco.de/bch52p'
+      },
+    ]
 
   useEffect(
     useCallback(() => {
@@ -32,8 +50,16 @@ const QRScreen: React.FC<null> = (props) => {
     }
 
     const onSuccess = (data) => {
-        console.log(data)
-        props.navigation.navigate("ProductDetailScreen", { product: data.data });
+        console.log("QR DATA: ",data)
+        if(data?.data){
+        // Linking.openURL(data?.data)
+        let items = products.filter(e => e.link == data?.data)
+        console.log("QR DATA: ",items)
+         props.navigation.navigate("ProductDetailScreen", { product: items[0] });
+      }else{
+          alert("product not found")
+        }
+        // props.navigation.navigate("ProductDetailScreen", { product: data.data });
     }
 
     return <View style={styles.container}>
