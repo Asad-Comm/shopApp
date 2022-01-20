@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         height: SCREEN_WIDTH * 0.06,
         width: SCREEN_WIDTH * 0.06,
         resizeMode: 'contain',
+        tintColor:'white'
     },
     chat: {
         height: SCREEN_WIDTH * 0.25,

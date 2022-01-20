@@ -1,5 +1,5 @@
 import React , { useEffect, useState} from 'react';
-import { Image, TouchableOpacity, View, ScrollView} from 'react-native';
+import { Image, TouchableOpacity, View, ScrollView,ActivityIndicator} from 'react-native';
 import { icons } from '../../assets/images';
 import FeedBackModal from '../../components/FeedBackModal';
 import TextRegular from '../../components/text-regular';
@@ -44,7 +44,7 @@ const HomeScreen: React.FC<null> = (props) => {
             <View />
             <View style={styles.headerLeft}>
                 <TouchableOpacity onPress={()=>props.navigation.navigate("CartScreen")}>
-                    <Image source={icons.menu} style={styles.icon} />
+                    <Image source={icons.cart} style={styles.icon} />
                 </TouchableOpacity>
             </View>
         </View>
@@ -82,7 +82,6 @@ const HomeScreen: React.FC<null> = (props) => {
     return <View style={styles.container}>
         {renderHeader()}
         <ScrollView>
-        {renderProducts()}
         <TouchableOpacity onPress={() => props.navigation.navigate("QRScreen")} style={styles.body}>
             <Image
                 source={icons.qrCode}
@@ -93,6 +92,18 @@ const HomeScreen: React.FC<null> = (props) => {
                 style={styles.startNow}
             />
         </TouchableOpacity>
+        <View style={{justifyContent:'center',alignItems:'center'}}>
+        <TextRegular
+                text={"Preferred Products"}
+                style={{
+                    color:"white",
+                    fontSize: 25,
+                    marginTop: 40,
+                    fontWeight:'bold'
+                }}
+            />
+        </View>
+        {Array.isArray(data) && data.length > 0 ? renderProducts() : <ActivityIndicator size={"large"} />}
         </ScrollView>
     </View>
 };

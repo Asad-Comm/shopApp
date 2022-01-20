@@ -3,6 +3,7 @@ export const icons = {
     play: require("./icons/play.png"),
     share: require("./icons/share.png"),
     qrCode: require("./icons/qr-code.png"),
+    cart:require("./icons/cart.png"),
     key: require("./icons/key.png"),
     back: require("./icons/back.png"),
     vibrate: require("./icons/vibrate.png"),
