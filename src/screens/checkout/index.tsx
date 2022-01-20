@@ -2,6 +2,7 @@ import { CommonActions } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {   ActivityIndicator, Alert, TextInput, TouchableOpacity, View, } from 'react-native';
 import { useDispatch } from 'react-redux';
+import FeedBackModal from '../../components/FeedBackModal';
 import TextRegular from '../../components/text-regular';
 import TextSemiBold from '../../components/text-semibold';
 import GeneralActions from '../../StateManagement/Actions/general';
@@ -13,6 +14,7 @@ const CheckoutScreen: React.FC<null> = (props) => {
     const [expiry, setExpiry] = useState('');
     const [cvv, setCVV] = useState('');
     const [loading, setLoading] = useState(false);
+    const [modalVisible,setModalVisibility] = useState(false);
     const dispatch = useDispatch();
 
     const onContinue = () => {
@@ -31,11 +33,30 @@ const CheckoutScreen: React.FC<null> = (props) => {
 
 
         setLoading(true);
-
         setTimeout(() => {
             dispatch(GeneralActions.clearCart());
             Alert.alert("Purchase Completed");
-            props.navigation.dispatch({
+            setModalVisibility(true);
+            // props.navigation.dispatch({
+            //     ...CommonActions.reset({
+            //         index: 0,
+            //         routes: [
+            //             {
+            //                 name: 'HomeScreen',
+            //             },
+            //         ],
+            //     }),
+            // });
+        }, 6000);
+    }
+ 
+    if(modalVisible){
+        return <FeedBackModal 
+        onSubmit={() => {
+            setModalVisibility(false)
+            Alert.alert("Thank you for your Feedback");
+            setLoading(false);
+             props.navigation.dispatch({
                 ...CommonActions.reset({
                     index: 0,
                     routes: [
@@ -45,10 +66,22 @@ const CheckoutScreen: React.FC<null> = (props) => {
                     ],
                 }),
             });
-        }, 6000);
+        }}
+        onClose={() => {
+         setModalVisibility(false)
+         props.navigation.dispatch({
+             ...CommonActions.reset({
+                 index: 0,
+                 routes: [
+                     {
+                         name: 'HomeScreen',
+                     },
+                 ],
+             }),
+         });
+     }}
+     />
     }
- 
-
     if (loading) {
         return <View style={[styles.container, {justifyContent: 'center', alignItems: 'center'}]}>
             <ActivityIndicator size={"large"} />
@@ -107,6 +140,7 @@ const CheckoutScreen: React.FC<null> = (props) => {
                 style={styles.setPassword}
             />
         </TouchableOpacity>
+        
     </View>
 };
 

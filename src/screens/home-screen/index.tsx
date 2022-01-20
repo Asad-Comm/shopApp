@@ -1,6 +1,7 @@
 import React , { useEffect, useState} from 'react';
 import { Image, TouchableOpacity, View, ScrollView} from 'react-native';
 import { icons } from '../../assets/images';
+import FeedBackModal from '../../components/FeedBackModal';
 import TextRegular from '../../components/text-regular';
 import TextSemiBold from '../../components/text-semibold';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../utils/metrics';
@@ -10,6 +11,7 @@ const HomeScreen: React.FC<null> = (props) => {
 
 
     const [data,setData] = useState([]);
+    const [visible,setVisible] = useState(true);
 
 
     useEffect(() => {
@@ -75,6 +77,7 @@ const HomeScreen: React.FC<null> = (props) => {
           </View>
         </TouchableOpacity>
     }
+
 
     return <View style={styles.container}>
         {renderHeader()}
