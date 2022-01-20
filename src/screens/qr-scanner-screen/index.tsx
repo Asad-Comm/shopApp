@@ -12,6 +12,8 @@ const QRScreen: React.FC<null> = (props) => {
     const cameraRef = useRef();
     const isFocused = useIsFocused();
 
+
+
     let products = [
       {
         title : 'Pepsi Can',
@@ -48,6 +50,9 @@ const QRScreen: React.FC<null> = (props) => {
             <View />
         </View>
     }
+
+
+
 
     const onSuccess = (data) => {
         console.log("QR DATA: ",data)

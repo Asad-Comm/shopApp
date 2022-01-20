@@ -31,7 +31,7 @@ const ProductDetailScreen: React.FC<null> = (props) => {
         {renderHeader()}
         <View style={styles.body}>
             <Image
-                source={{ uri: paramsProduct?.url }}
+                source={{ uri: paramsProduct?.image }}
                 style={styles.chat}
             />
             <TextRegular

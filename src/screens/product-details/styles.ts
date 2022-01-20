@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     chat: {
-        height: SCREEN_WIDTH * 0.25,
-        width: SCREEN_WIDTH * 0.25,
+        height: SCREEN_WIDTH * 0.4,
+        width: SCREEN_WIDTH * 0.4,
         resizeMode: 'contain',
         marginBottom: 30
     },

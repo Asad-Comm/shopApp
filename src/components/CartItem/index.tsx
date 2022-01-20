@@ -14,7 +14,7 @@ const CartItem = (props) => {
   return (
     <View style={[styles.container, props.styles]}>
 
-      <Image source={{uri: props.cartItem.url}} style={styles.image} />
+      <Image source={{uri: props.cartItem?.image}} style={styles.image} />
 
       <View style={styles.verticalView}>
         <TextSemiBold numberOfLines={1} text={props.cartItem.title} style={styles.productTitle} />
